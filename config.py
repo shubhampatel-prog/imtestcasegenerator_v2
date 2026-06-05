@@ -23,6 +23,6 @@ LLM_API_KEY = "sk-yKcyZhv88dzAfDxevjQV9A"
 
 LLM_BASE_URL = "https://imllm.intermesh.net/v1"
 
-LLM_MODEL = "qwen/qwen3-32b"
+LLM_MODEL = "gemini-2.5-flash"
 
 #LLM_MODEL = "openai/gpt-4.1-mini"

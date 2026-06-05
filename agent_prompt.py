@@ -209,7 +209,7 @@ EXISTING TEST CASES (KNOWLEDGE BASE)
 
 Use these to understand application behavior and coverage patterns.
 
-{json.dumps(kb[:20], indent=2)}
+{json.dumps(kb, indent=2)}
 
 ==================================================
 NOW GENERATE HIGH QUALITY TEST CASES

@@ -7,8 +7,7 @@ def normalize_testcases(raw_cases):
 
     kb = []
 
-    # 🔥 IMPORTANT: limit to prevent token explosion
-    for tc in raw_cases[:25]:
+    for tc in raw_cases:
         kb.append({
             "name":                  tc.get("name", ""),
             "summary":               tc.get("summary", ""),

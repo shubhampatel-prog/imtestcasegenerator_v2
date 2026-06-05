@@ -63,13 +63,24 @@ def get_all_testcases(project_id, kb_suite_id=None):
 
         print(f"📦 Raw KB response type: {type(response)}, length: {len(response) if isinstance(response, (list, dict)) else 'N/A'}")
 
-        if isinstance(response, dict):
-            items = list(response.values())
-        elif isinstance(response, list):
-            items = response
-        else:
-            print(f"⚠️ Unexpected KB response type: {type(response)}")
-            return []
+        # Recursively flatten — TestLink deep=True returns nested dicts:
+        # { "suite_id_1": { "tc_id_1": {...}, "tc_id_2": {...} }, "tc_id_3": {...} }
+        # A test case dict always has "name" or "testcase_name" key.
+        def _flatten(obj):
+            found = []
+            if isinstance(obj, dict):
+                if "name" in obj or "testcase_name" in obj:
+                    found.append(obj)
+                else:
+                    for v in obj.values():
+                        found.extend(_flatten(v))
+            elif isinstance(obj, list):
+                for v in obj:
+                    found.extend(_flatten(v))
+            return found
+
+        items = _flatten(response)
+        print(f"📋 Flattened KB items: {len(items)}")
 
         kb_cases = []
 

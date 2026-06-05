@@ -18,6 +18,9 @@ def _clean_json(text: str) -> str:
     if not text:
         return text
 
+    # Strip Qwen3-32B <think>...</think> reasoning block
+    text = re.sub(r"<think>.*?</think>", "", text, flags=re.IGNORECASE | re.DOTALL)
+
     text = re.sub(r"```json", "", text, flags=re.IGNORECASE)
     text = re.sub(r"```", "", text)
 
@@ -28,7 +31,14 @@ def _clean_json(text: str) -> str:
         .replace("\u201d", '"')
     )
 
-    return text.strip()
+    text = text.strip()
+
+    # Extract only the outermost JSON array or object — discard any trailing junk
+    match = re.search(r"(\[.*\]|\{.*\})", text, flags=re.DOTALL)
+    if match:
+        text = match.group(1).strip()
+
+    return text
 
 
 # =====================================================
@@ -38,6 +48,8 @@ def generate_testcases(requirement: dict, kb: list, return_prompt: bool = False,
 
     prompt = build_prompt(requirement, kb, platform=platform)
 
+    # gemini-2.5-flash via IM Gateway — 1,048,576 token context window.
+    # No token caps needed on input or output.
     try:
 
         response = client.chat.completions.create(
@@ -53,7 +65,6 @@ def generate_testcases(requirement: dict, kb: list, return_prompt: bool = False,
                 }
             ],
             temperature=0.2,
-  #          max_tokens=3000
         )
 
         raw_output = response.choices[0].message.content
