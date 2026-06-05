@@ -8,7 +8,7 @@ TESTLINK_API_KEY = "85aff834dd2de71a035c98ef04b68b19"
 TESTLINK_PROJECT_NAME = "IndiaMART_Android_App"
 TESTLINK_PROJECT_ID = 2
 TESTLINK_SUITE_ID = 352634
-TESTLINK_AUTHOR_LOGIN = "Shubham.patel@indiamart.com"
+TESTLINK_AUTHOR_LOGIN = "imtestcasegenerator@gmail.com"
 TESTLINK_KB_SUITE_ID = 26691
 
 # # ================== OPENAI ==================
