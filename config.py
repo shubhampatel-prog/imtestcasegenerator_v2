@@ -4,11 +4,11 @@ OPENPROJECT_API_KEY = "06c041c750232b1d6b7851b2a09f08aa14c7cc8c325e00ac87f11598b
 
 # ================== TESTLINK ==================
 TESTLINK_URL = "https://testlink.intermesh.net/lib/api/xmlrpc/v1/xmlrpc.php"
-TESTLINK_API_KEY = "85aff834dd2de71a035c98ef04b68b19"
+TESTLINK_API_KEY = "7484105e2f0ce62a0db4af1f04c2eb60"
 TESTLINK_PROJECT_NAME = "IndiaMART_Android_App"
 TESTLINK_PROJECT_ID = 2
 TESTLINK_SUITE_ID = 352634
-TESTLINK_AUTHOR_LOGIN = "imtestcasegenerator@gmail.com"
+TESTLINK_AUTHOR_LOGIN = "shubham.patel@indiamart.com"
 TESTLINK_KB_SUITE_ID = 26691
 
 # # ================== OPENAI ==================
